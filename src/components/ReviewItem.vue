@@ -1,21 +1,31 @@
 <template>
     <Card>
-        <button class="close">
+        <button class="close" @click="store.deleteReview(item)">
             <i class="fas fa-times"></i>
         </button>
-        <button class="edit">
+        <!-- <button class="edit" @click="store.editReview(item)">
             <i class="fas fa-edit"></i>
-        </button>
+        </button> -->
         <div class="num-display">
-            5
+            {{ item.rating }}
         </div>
         <div class="text-display">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius, vitae!
+            {{ item.text }}
         </div>
     </Card>
 </template>
 
 <script setup>
+import { defineProps } from 'vue'
 import Card from './shared/Card.vue';
 
+import { useReviewStore } from '../stores/reviews'
+
+const store = useReviewStore()
+
+defineProps({
+    item: {
+        type: Object
+    }
+})
 </script>
